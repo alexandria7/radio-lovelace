@@ -9,6 +9,7 @@ class Track extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      // index: props.index,
       title: props.title,
       albumart: props.albumart,
       favorite: false,
@@ -19,6 +20,12 @@ class Track extends React.Component {
 
   onFavoriteClick = () => {
     this.setState({ favorite: true });
+  }
+
+  onHandleClick = () => {
+    this.props.onTopClick(this.props.index);
+    // this.setState({index: 0});
+    console.log("im in track and top was clicked!")
   }
 
   render () {
@@ -36,6 +43,7 @@ class Track extends React.Component {
         <p className="track--playtime">{this.state.playtime}</p>
         <button
           className="track--control track--to-top"
+          onClick={this.onHandleClick}
           >
           <span role="img" aria-label="send to top">🔝</span>
         </button>
